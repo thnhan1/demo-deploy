@@ -1,49 +1,89 @@
+import { useTranslation } from 'react-i18next';
+import userInfo from '../config/userInfo.json';
 import heroImage from "../assets/react.svg";
+import { useImmersiveScroll, useParallax } from '../hooks/useImmersiveScroll';
 
 function HeroSection() {
+  const { t } = useTranslation();
+  const { scrollY } = useImmersiveScroll();
+  const parallaxOffset = useParallax(0.3);
+  
   return (
     <section
       id="home"
-      className="relative overflow-hidden py-28 md:py-40 app-bg-gradient"
+      className="relative overflow-hidden apple-spacing-lg immersive-section"
+      style={{
+        background: `var(--gradient-hero)`,
+      }}
     >
-      <div className="pointer-events-none absolute inset-0 subtle-grid opacity-[0.35]" />
-      <div className="relative max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-20">
-        <div className="relative w-56 h-56 md:w-64 md:h-64">
-          <div className="absolute -inset-3 rounded-full bg-gradient-to-br from-white/70 to-white/30 shadow-lgx" />
-          <img
-            src={heroImage}
-            alt="Symbolic avatar"
-            className="relative w-full h-full rounded-full border border-base object-contain p-6 bg-white/70 backdrop-blur-xl shadow-mdx"
-          />
+      {/* Animated background elements */}
+      <div 
+        className="absolute inset-0 opacity-20"
+        style={{
+          background: `radial-gradient(circle at ${50 + parallaxOffset * 0.1}% ${30 + parallaxOffset * 0.05}%, var(--color-brand) 0%, transparent 50%)`,
+          transform: `translateY(${parallaxOffset * 0.5}px)`
+        }}
+      />
+      
+      <div className="apple-container flex flex-col md:flex-row items-center gap-20">
+        <div 
+          className="relative w-56 h-56 md:w-72 md:h-72"
+          style={{ transform: `translateY(${parallaxOffset * 0.3}px)` }}
+        >
+          <div className="absolute -inset-4 rounded-full bg-gradient-to-br from-white/20 to-white/5 shadow-2xl" />
+          <div className="relative w-full h-full rounded-full glass-effect border border-white/20 shadow-2xl overflow-hidden">
+            <img
+              src={heroImage}
+              alt="Symbolic avatar"
+              className="w-full h-full object-contain p-8 transition-transform duration-700 hover:scale-110"
+            />
+          </div>
+          {/* Floating particles */}
+          <div className="absolute -top-4 -right-4 w-3 h-3 rounded-full animate-pulse opacity-60" style={{ backgroundColor: 'var(--color-brand)' }} />
+          <div className="absolute -bottom-2 -left-2 w-2 h-2 rounded-full animate-pulse opacity-40 delay-300" style={{ backgroundColor: 'var(--color-brand-accent)' }} />
         </div>
-        <div className="max-w-xl">
-          <p className="text-[32px] font-mono mb-6">Backend Developer</p>
-          <h1 className="heading-hero mb-6">
-            <div className="flex font-sans text-[24px] items-center gap-3">
-              Hello there <span className="inline-block animate-wave">👋</span>
-            </div>
-            <span className="heading-hero-strong font-mono">Nhan Tran</span>
-          </h1>
-          <p className="text-soft leading-relaxed text-base md:text-lg mb-8">
-            Backend developer focused on robust APIs using{" "}
-            <span className="font-mono text-green-500 font-bold">
-              Spring Boot
-            </span>{" "}
-            and Java Ecosystem, domain-driven design, and performance-aware
-            services. I build predictable, testable, and maintainable systems.
+        <div 
+          className="max-w-xl space-y-8"
+          style={{ transform: `translateY(${parallaxOffset * 0.2}px)` }}
+        >
+          <div className="space-y-4">
+            <p className="text-2xl md:text-3xl font-medium text-soft tracking-wide">{userInfo.title}</p>
+            <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+              <div className="flex items-center gap-4 mb-2">
+                <span className="text-2xl md:text-3xl font-normal">{t('hero.title')}</span>
+                <span className="inline-block animate-wave text-3xl md:text-4xl">{userInfo.greetingIcon}</span>
+              </div>
+              <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">
+                {userInfo.name}
+              </span>
+            </h1>
+          </div>
+          
+          <p className="text-lg md:text-xl text-soft leading-relaxed max-w-2xl">
+            {userInfo.bio.split(userInfo.bioHighlight).map((part, index) => (
+              <span key={index}>
+                {part}
+                {index === 0 && (
+                  <span className="font-semibold text-brand bg-[var(--color-brand)]/10 px-2 py-1 rounded-lg">
+                    {userInfo.bioHighlight}
+                  </span>
+                )}
+              </span>
+            ))}
           </p>
-          <div className="flex flex-wrap gap-4">
+          
+          <div className="flex flex-wrap gap-6 pt-4">
             <a
               href="#projects"
-              className="btn-ghost px-7 py-3 rounded-md text-sm tracking-wide font-medium border border-base shadow-smx focus-ring focus:outline-none transition relative overflow-hidden theme-switch-btn"
+              className="apple-button-secondary text-base font-medium transition-all duration-300 hover:scale-105"
             >
-              View Projects
+              {t('hero.cta.viewProjects')}
             </a>
             <a
               href="#contact"
-              className="btn-primary px-7 py-3 rounded-md text-sm tracking-wide font-medium shadow-mdx focus-ring focus:outline-none transition"
+              className="apple-button text-base font-medium transition-all duration-300 hover:scale-105"
             >
-              Contact
+              {t('hero.cta.contact')}
             </a>
           </div>
         </div>

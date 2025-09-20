@@ -1,50 +1,35 @@
 import "aos/dist/aos.css"; // animation styles
 import { useEffect } from "react";
+import { useTranslation } from 'react-i18next';
 import Section from "./Section";
+import projectsData from '../config/projects.json';
 
 interface Project {
+  id: string;
   title: string;
   summary: string;
   tech: string[];
   link?: string;
   repo?: string;
+  demo?: string;
+  featured: boolean;
+  year: number;
 }
 
-const projects: Project[] = [
-  {
-    title: "API Platform Skeleton",
-    summary:
-      "Modular backend template featuring clean layering, auth, request validation, metrics & structured logging.",
-    tech: ["Go", "PostgreSQL", "Redis", "OpenTelemetry"],
-    repo: "#",
-  },
-  {
-    title: "Realtime Notification Service",
-    summary:
-      "Event-driven microservice delivering fan-out notifications with retry & dead-letter handling.",
-    tech: ["Node.js", "Kafka", "Redis", "gRPC"],
-    repo: "#",
-  },
-  {
-    title: "Internal Admin Dashboard",
-    summary:
-      "Minimal operations UI surfacing system metrics, error traces, and audit trails for support team.",
-    tech: ["React", "TypeScript", "TailwindCSS", "REST"],
-    link: "#",
-  },
-];
-
 export const Projects = () => {
+  const { t } = useTranslation();
+  const projects = projectsData as Project[];
+  
   useEffect(() => {
     let cancelled = false;
     // dynamic import so bundle only loads AOS on client
     import("aos").then((AOS) => {
       if (cancelled) return;
       AOS.init({
-        duration: 750,
-        easing: "ease-out-cubic",
-        once: false, // allow replay
-        mirror: true, // animate on scroll up
+        duration: 100,
+        easing: "ease-in-cubic",
+        once: true, // allow replay
+        // mirror: true, // animate on scroll up
         offset: 80,
       });
       // refresh in case images/fonts late
@@ -62,73 +47,85 @@ export const Projects = () => {
   }, []);
 
   return (
-    <Section id="projects" title="Projects" eyebrow="Selected Work">
-      <div className="grid gap-10 md:grid-cols-3">
-        {projects.map((p, i) => (
+    <Section id="projects" title={t('projects.title')} eyebrow={t('projects.subtitle')}>
+      <div className="apple-grid">
+        {projects.filter(p => p.featured).map((p, i) => (
           <div
-            key={p.title}
-            className="group relative card flex flex-col gap-4 hover:shadow-mdx transition"
+            key={p.id}
+            className="group relative apple-card flex flex-col gap-6"
             data-aos="fade-up"
-            data-aos-delay={i * 120}
-            data-aos-once="false"
+            data-aos-delay={i * 200}
+            data-aos-duration="600"
+            data-aos-easing="ease-out-cubic"
           >
-            <div>
-              <h3 className="text-lg font-semibold mb-2 tracking-tight">
+            <div className="flex justify-between items-start">
+                  <h3 className="text-xl font-bold tracking-tight" style={{ color: 'var(--color-text)' }}>
                 {p.title}
               </h3>
-              <p className="text-sm text-soft leading-relaxed">{p.summary}</p>
+              <span className="apple-badge text-xs font-medium">{p.year}</span>
             </div>
-            <ul className="flex flex-wrap gap-2 mt-auto">
-              {p.tech.map((t) => (
-                <li
-                  key={t}
-                  className="pill"
-                  data-aos="zoom-in"
-                  data-aos-delay={Math.min(480, 160 + i * 120)}
-                  data-aos-once="false"
-                >
-                  {t}
-                </li>
-              ))}
-            </ul>
-            <div className="flex gap-4 pt-2 text-xs">
-              {p.link && (
-                <a
-                  href={p.link}
-                  className="text-soft hover:text-brand transition"
-                  data-aos="fade"
-                  data-aos-delay={180 + i * 120}
-                  data-aos-once="false"
-                >
-                  Live ↗
-                </a>
-              )}
-              {p.repo && (
-                <a
-                  href={p.repo}
-                  className="text-soft hover:text-brand transition"
-                  data-aos="fade"
-                  data-aos-delay={220 + i * 120}
-                  data-aos-once="false"
-                >
-                  Code ↗
-                </a>
-              )}
+            
+            <p className="text-base text-soft leading-relaxed flex-1">{p.summary}</p>
+            
+            <div className="space-y-4">
+              <ul className="flex flex-wrap gap-3">
+                {p.tech.map((tech) => (
+                  <li
+                    key={tech}
+                    className="apple-badge"
+                  >
+                    {tech}
+                  </li>
+                ))}
+              </ul>
+              
+              <div className="flex gap-6 pt-2">
+                {p.demo && (
+                  <a
+                    href={p.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-brand hover:text-brand-accent font-medium text-sm flex items-center gap-2 group"
+                  >
+                    <span>{t('projects.cta.live')}</span>
+                    <svg className="w-4 h-4 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                )}
+                {p.repo && (
+                  <a
+                    href={p.repo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-brand hover:text-brand-accent font-medium text-sm flex items-center gap-2 group"
+                  >
+                    <span>{t('projects.cta.code')}</span>
+                    <svg className="w-4 h-4 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                )}
+              </div>
             </div>
-            <div className="pointer-events-none absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.25),transparent_70%)]" />
+            
+            {/* Hover effect overlay */}
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 pointer-events-none" />
           </div>
         ))}
       </div>
-      <p
-        className="text-sm text-soft mt-10 leading-relaxed"
-        data-aos="fade-up"
-        data-aos-delay={projects.length * 120 + 120}
-        data-aos-once="false"
+      
+      <div 
+        className="text-center mt-16"
+        data-aos="fade-out"
+        data-aos-easing="ease-in-cubic"
+        data-aos-delay="350"
+        data-aos-duration="600"
       >
-        These are illustrative placeholders. Share the real project titles +
-        one-line impact statements (include metrics if possible), and I'll
-        refine.
-      </p>
+        <p className="text-base text-soft leading-relaxed max-w-3xl mx-auto">
+          {t('projects.description')}
+        </p>
+      </div>
     </Section>
   );
 };

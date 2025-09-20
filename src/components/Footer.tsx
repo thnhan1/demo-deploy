@@ -1,13 +1,17 @@
-const nav = [
-  { label: "Home", href: "#home" },
-  { label: "Back-end", href: "#backend" },
-  { label: "Front-end", href: "#frontend" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
-];
+import { useTranslation } from 'react-i18next';
+import userInfo from '../config/userInfo.json';
 
 export const Footer = () => {
+  const { t } = useTranslation();
   const year = new Date().getFullYear();
+  
+  const nav = [
+    { label: t('navigation.home'), href: "#home" },
+    { label: t('navigation.projects'), href: "#projects" },
+    { label: t('navigation.backend'), href: "#backend" },
+    { label: t('navigation.frontend'), href: "#frontend" },
+    { label: t('navigation.contact'), href: "#contact" },
+  ];
   return (
     <footer className="relative mt-24 border-t border-base surface overflow-hidden">
       <div className="pointer-events-none absolute inset-0 subtle-grid opacity-30" />
@@ -15,11 +19,10 @@ export const Footer = () => {
         <div>
           <div className="flex items-baseline gap-2 mb-4 select-none text-soft">
             <span className="ink-brush-accent text-brand">N</span>
-            <span className="text-lg font-medium tracking-wide">Nhan Tran</span>
+            <span className="text-lg font-medium tracking-wide">{userInfo.name}</span>
           </div>
           <p className="text-sm text-soft leading-relaxed max-w-sm">
-            Building reliable backend services & minimal interfaces. Clean code,
-            measurable performance, calm aesthetics.
+            {userInfo.bio}
           </p>
         </div>
         <nav className="text-sm flex flex-wrap gap-x-6 gap-y-3 md:justify-center text-soft">
@@ -36,13 +39,16 @@ export const Footer = () => {
         <div className="space-y-4 md:text-right text-sm text-soft">
           <div className="font-medium text-brand">Get in touch</div>
           <a
-            href="mailto:youremail@example.com"
-            className="hover:text-brand break-all"
+            href={userInfo.socialLinks.email}
+            className="hover:text-brand break-all transition-colors"
           >
-            nhandev100@example.com
+            {userInfo.socialLinks.email.replace('mailto:', '')}
           </a>
           <div className="pt-4 text-faint text-xs">
-            © {year} Nhan Tran. All rights reserved.
+            {t('footer.copyright')}
+          </div>
+          <div className="text-faint text-xs">
+            {t('footer.builtWith')}
           </div>
         </div>
       </div>

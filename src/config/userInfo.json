@@ -1,0 +1,15 @@
+{
+  "name": "Nhan Tran",
+  "title": "Backend Developer",
+  "avatar": "/src/assets/react.svg",
+  "greeting": "Hello there",
+  "greetingIcon": "👋",
+  "bio": "Backend developer focused on robust APIs using Spring Boot and Java Ecosystem, domain-driven design, and performance-aware services. I build predictable, testable, and maintainable systems.",
+  "bioHighlight": "Spring Boot",
+  "socialLinks": {
+    "github": "https://github.com/nhan-tran",
+    "linkedin": "https://linkedin.com/in/nhan-tran",
+    "email": "mailto:nhan@example.com"
+  },
+  "resume": "/SWE_Resume_Template (6).pdf"
+}

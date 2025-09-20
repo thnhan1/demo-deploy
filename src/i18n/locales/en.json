@@ -1,0 +1,50 @@
+{
+  "navigation": {
+    "home": "Home",
+    "backend": "Back-end",
+    "frontend": "Front-end", 
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Hello there",
+    "subtitle": "I'm a",
+    "cta": {
+      "viewProjects": "View Projects",
+      "contact": "Contact",
+      "downloadResume": "Download Resume"
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Selected Work",
+    "cta": {
+      "live": "Live ↗",
+      "code": "Code ↗"
+    },
+    "description": "These are illustrative placeholders. Share the real project titles + one-line impact statements (include metrics if possible), and I'll refine."
+  },
+  "skills": {
+    "backend": {
+      "title": "Backend Skills",
+      "subtitle": "Server Technologies"
+    },
+    "frontend": {
+      "title": "Frontend Skills", 
+      "subtitle": "Client Technologies"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Get In Touch",
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "message": "Let's work together",
+    "cta": "Send Message"
+  },
+  "footer": {
+    "copyright": "© 2024 Nhan Tran. All rights reserved.",
+    "builtWith": "Built with React, TypeScript & TailwindCSS"
+  }
+}

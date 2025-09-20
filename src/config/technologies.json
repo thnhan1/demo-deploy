@@ -1,0 +1,97 @@
+{
+  "backend": [
+    {
+      "name": "Java",
+      "level": "Expert",
+      "description": "Enterprise applications, Spring ecosystem",
+      "icon": "☕",
+      "category": "language"
+    },
+    {
+      "name": "JavaScript/TypeScript",
+      "level": "Expert",
+      "description": "Server-side development, Node.js ecosystem",
+      "icon": "🟨",
+      "category": "language"
+    },
+    {
+      "name": "Python",
+      "level": "Advanced",
+      "description": "Data processing, automation, scripting",
+      "icon": "🐍",
+      "category": "language"
+    },
+    {
+      "name": "Spring Boot",
+      "level": "Expert",
+      "description": "Microservices, REST APIs, Security",
+      "icon": "🌱",
+      "category": "framework"
+    },
+    {
+      "name": "PostgreSQL",
+      "level": "Advanced",
+      "description": "Database design, optimization, transactions",
+      "icon": "🐘",
+      "category": "database"
+    },
+    {
+      "name": "Redis",
+      "level": "Advanced",
+      "description": "Caching, session management, pub/sub",
+      "icon": "🔴",
+      "category": "cache"
+    },
+    {
+      "name": "Docker",
+      "level": "Advanced",
+      "description": "Containerization, orchestration",
+      "icon": "🐳",
+      "category": "devops"
+    },
+    {
+      "name": "AWS",
+      "level": "Intermediate",
+      "description": "Cloud services, deployment",
+      "icon": "☁️",
+      "category": "cloud"
+    }
+  ],
+  "frontend": [
+    {
+      "name": "React",
+      "level": "Advanced",
+      "description": "Component architecture, hooks, state management",
+      "icon": "⚛️",
+      "category": "framework"
+    },
+    {
+      "name": "TypeScript",
+      "level": "Advanced",
+      "description": "Type safety, modern JavaScript features",
+      "icon": "📘",
+      "category": "language"
+    },
+    {
+      "name": "TailwindCSS",
+      "level": "Advanced",
+      "description": "Utility-first CSS, responsive design",
+      "icon": "🎨",
+      "category": "styling"
+    },
+    {
+      "name": "Vite",
+      "level": "Advanced",
+      "description": "Build tooling, development experience",
+      "icon": "⚡",
+      "category": "tooling"
+    },
+    {
+      "name": "Next.js",
+      "level": "Intermediate",
+      "description": "Full-stack React framework",
+      "icon": "▲",
+      "category": "framework"
+    }
+  ]
+}

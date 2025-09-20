@@ -1,0 +1,32 @@
+[
+  {
+    "id": "api-platform-skeleton",
+    "title": "API Platform Skeleton",
+    "summary": "Modular backend template featuring clean layering, auth, request validation, metrics & structured logging.",
+    "tech": ["Go", "PostgreSQL", "Redis", "OpenTelemetry"],
+    "repo": "https://github.com/nhan-tran/api-platform-skeleton",
+    "demo": null,
+    "featured": true,
+    "year": 2024
+  },
+  {
+    "id": "realtime-notification-service",
+    "title": "Realtime Notification Service",
+    "summary": "Event-driven microservice delivering fan-out notifications with retry & dead-letter handling.",
+    "tech": ["Node.js", "Kafka", "Redis", "gRPC"],
+    "repo": "https://github.com/nhan-tran/notification-service",
+    "demo": null,
+    "featured": true,
+    "year": 2024
+  },
+  {
+    "id": "admin-dashboard",
+    "title": "Internal Admin Dashboard",
+    "summary": "Minimal operations UI surfacing system metrics, error traces, and audit trails for support team.",
+    "tech": ["React", "TypeScript", "TailwindCSS", "REST"],
+    "repo": "https://github.com/nhan-tran/admin-dashboard",
+    "demo": "https://admin-dashboard-demo.vercel.app",
+    "featured": true,
+    "year": 2024
+  }
+]

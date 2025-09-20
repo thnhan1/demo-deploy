@@ -1,0 +1,50 @@
+{
+  "navigation": {
+    "home": "Trang chủ",
+    "backend": "Back-end",
+    "frontend": "Front-end",
+    "projects": "Dự án", 
+    "contact": "Liên hệ"
+  },
+  "hero": {
+    "title": "Xin chào",
+    "subtitle": "Tôi là",
+    "cta": {
+      "viewProjects": "Xem dự án",
+      "contact": "Liên hệ",
+      "downloadResume": "Tải CV"
+    }
+  },
+  "projects": {
+    "title": "Dự án",
+    "subtitle": "Công việc đã chọn",
+    "cta": {
+      "live": "Demo ↗",
+      "code": "Mã nguồn ↗"
+    },
+    "description": "Đây là các dự án minh họa. Chia sẻ tên dự án thực tế + mô tả tác động một dòng (bao gồm số liệu nếu có thể), và tôi sẽ tinh chỉnh."
+  },
+  "skills": {
+    "backend": {
+      "title": "Kỹ năng Backend",
+      "subtitle": "Công nghệ Server"
+    },
+    "frontend": {
+      "title": "Kỹ năng Frontend",
+      "subtitle": "Công nghệ Client"
+    }
+  },
+  "contact": {
+    "title": "Liên hệ",
+    "subtitle": "Kết nối",
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "message": "Hãy cùng làm việc",
+    "cta": "Gửi tin nhắn"
+  },
+  "footer": {
+    "copyright": "© 2024 Nhan Tran. Tất cả quyền được bảo lưu.",
+    "builtWith": "Được xây dựng với React, TypeScript & TailwindCSS"
+  }
+}

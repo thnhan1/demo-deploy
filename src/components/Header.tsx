@@ -1,17 +1,21 @@
+import { useTranslation } from 'react-i18next';
 import ThemeToggle from "./ThemeToggle";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export const Header = () => {
-  const navItems: { label: string; href: string }[] = [
-    { label: "Home", href: "#home" },
-    { label: "Back-end", href: "#backend" },
-    { label: "Front-end", href: "#frontend" },
-    { label: "Projects", href: "#projects" },
-    { label: "Contact", href: "#contact" },
+  const { t } = useTranslation();
+  
+  const navItems: { label: string; href: string; key: string }[] = [
+    { label: t('navigation.home'), href: "#home", key: "home" },
+    { label: t('navigation.projects'), href: "#projects", key: "projects" },
+    { label: t('navigation.backend'), href: "#backend", key: "backend" },
+    { label: t('navigation.frontend'), href: "#frontend", key: "frontend" },
+    { label: t('navigation.contact'), href: "#contact", key: "contact" },
   ];
 
   return (
-    <header className="sticky top-0 z-40 backdrop-blur-xl surface border-b border-base">
-      <div className="mx-auto max-w-7xl px-6 py-4 flex items-center gap-8 justify-between">
+    <header className="sticky top-0 py-2 z-50 glass-effect border-b border-[var(--color-border)]">
+      <div className="apple-container py-4 flex items-center gap-8 justify-between">
         <a href="#home" className="group select-none flex items-center gap-2">
           <span className="ink-brush-accent text-brand">N</span>
           <span className="text-lg font-medium tracking-wide text-soft group-hover:text-brand transition-colors">
@@ -31,6 +35,7 @@ export const Header = () => {
           ))}
         </nav>
         <div className="flex items-center gap-3">
+          <LanguageSwitcher />
           <ThemeToggle />
         </div>
       </div>
