@@ -3,7 +3,6 @@ import userInfo from '../config/userInfo.json';
 
 export const Footer = () => {
   const { t } = useTranslation();
-  const year = new Date().getFullYear();
   
   const nav = [
     { label: t('navigation.home'), href: "#home" },

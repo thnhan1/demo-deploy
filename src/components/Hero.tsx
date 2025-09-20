@@ -1,11 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import userInfo from '../config/userInfo.json';
 import heroImage from "../assets/react.svg";
-import { useImmersiveScroll, useParallax } from '../hooks/useImmersiveScroll';
+import { useParallax } from '../hooks/useImmersiveScroll';
 
 function HeroSection() {
   const { t } = useTranslation();
-  const { scrollY } = useImmersiveScroll();
   const parallaxOffset = useParallax(0.3);
   
   return (

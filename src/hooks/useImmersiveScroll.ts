@@ -5,7 +5,7 @@ export const useImmersiveScroll = () => {
   const [isScrolling, setIsScrolling] = useState(false);
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('down');
   const lastScrollY = useRef(0);
-  const scrollTimeout = useRef<NodeJS.Timeout>();
+  const scrollTimeout = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,7 +28,7 @@ export const useImmersiveScroll = () => {
       }
 
       // Set timeout to detect when scrolling stops
-      scrollTimeout.current = setTimeout(() => {
+      scrollTimeout.current = window.setTimeout(() => {
         setIsScrolling(false);
       }, 150);
     };
